@@ -5,8 +5,6 @@ RUN apk add wget alpine-sdk sudo
 COPY py3-numpy.apk py3-numpy.apk 
 RUN apk add ./py3-numpy.apk --allow-untrusted
 
-RUN python3 -m pip install cython
-
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 RUN addgroup appuser abuild
 
@@ -16,6 +14,7 @@ USER appuser
 WORKDIR /home/appuser
 
 ENV PYTHONPATH /usr/lib/python3.11/site-packages
+RUN python3 -m pip install cython
 
 RUN abuild-keygen -a -i -n
 
