@@ -2,8 +2,8 @@ FROM python:3.11.0b3-alpine3.15
 
 RUN apk add wget alpine-sdk sudo
 
-COPY cython.apk cython.apk 
-RUN apk add ./cython.apk --allow-untrusted
+COPY py3-numpy.apk py3-numpy.apk 
+RUN apk add ./py3-numpy.apk --allow-untrusted
 
 RUN python3 -m pip install cython
 
@@ -17,8 +17,6 @@ WORKDIR /home/appuser
 
 RUN abuild-keygen -a -i -n
 
-RUN wget https://git.alpinelinux.org/aports/plain/community/py3-numpy/APKBUILD
-RUN wget https://git.alpinelinux.org/aports/plain/community/py3-numpy/numpy-1.17.0-musl.patch
-RUN wget https://git.alpinelinux.org/aports/plain/community/py3-numpy/site.cfg
+RUN wget https://git.alpinelinux.org/aports/plain/community/py3-pandas/APKBUILD
 
 RUN abuild checksum && abuild -r
