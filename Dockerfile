@@ -16,6 +16,6 @@ RUN python3 -m pip install ./numpy-1.22.3-cp311-cp311-linux_x86_64.whl
 
 RUN abuild-keygen -a -i -n
 
-RUN wget https://git.alpinelinux.org/aports/plain/community/py3-pandas/APKBUILD
+COPY APKBUILD APKBUILD
 
 RUN abuild checksum && abuild -r
