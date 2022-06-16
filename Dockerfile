@@ -15,6 +15,8 @@ RUN echo "%abuild ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/abuild
 USER appuser
 WORKDIR /home/appuser
 
+ENV PYTHONPATH /usr/lib/python3.11/site-packages
+
 RUN abuild-keygen -a -i -n
 
 RUN wget https://git.alpinelinux.org/aports/plain/community/py3-pandas/APKBUILD
